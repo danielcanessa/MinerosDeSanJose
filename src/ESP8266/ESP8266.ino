@@ -5,14 +5,21 @@ SoftwareSerial esp8266(3,2);
 
 const char* SSID = "LosMalekus";
 const char* PASSWORD = "morza200";
-
+int resetPin=3;
 void setup()
 {
+  
  Serial.begin(9600);  // monitor serial del arduino
+
+
+ 
  esp8266.begin(9600); // baud rate del ESP8255
  
  pinMode(13,OUTPUT);
  digitalWrite(13,LOW);
+
+// pinMode(resetPin,OUTPUT);
+// digitalWrite(resetPin,LOW);
 
  Serial.println("Initializing the connection");
  sendData("AT+RST\r\n",2000);      // resetear módulo
@@ -77,6 +84,10 @@ void loop()
      comandoCerrar+="\r\n";
      Serial.println(comandoCerrar);
      sendData(comandoCerrar,3000);
+
+    // digitalWrite(resetPin, LOW); // VCC +5V mode 
+    // delay(100);
+    // digitalWrite(resetPin, HIGH); // VCC +5V mode 
    }
  }
 }

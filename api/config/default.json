@@ -1,0 +1,10 @@
+{
+  "mongodb":{
+    "url": "ds057176.mlab.com",
+    "port": 57176,
+    "user": "konecto",
+    "password":"konecto",
+    "database":"konecto-db"
+
+  }
+}

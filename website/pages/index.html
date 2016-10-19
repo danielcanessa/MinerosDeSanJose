@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mineros de SJ</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Mineros de SJ V1.0</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Gas Concentration
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div id="gas-chart" ></div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Last Steps</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div id='step-field-0' class="col-lg-3 col-md-6" style="display:none">
+                    <div id='step-panel-0' class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i id="arrow-0" class="fa fa-arrow-circle-left fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div id='gas-level-0' class="huge">GL: 1300</div>
+                                    <div id='date-0'>10/10/2015 01:02:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id='step-field-1' class="col-lg-3 col-md-6" style="display:none">
+                    <div id='step-panel-1' class="panel panel-primary" >
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i id="arrow-1" class="fa fa-arrow-circle-right fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div id='gas-level-1' class="huge">GL: 1300</div>
+                                    <div id='date-1'>10/10/2015 01:02:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id='step-field-2' class="col-lg-3 col-md-6" style="display:none">
+                    <div id='step-panel-2' class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i id="arrow-2" class="fa fa-arrow-circle-up fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div id='gas-level-2' class="huge">GL: 1300</div>
+                                    <div id='date-2'>10/10/2015 01:02:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id='step-field-3' class="col-lg-3 col-md-6" style="display:none">
+                    <div id='step-panel-3' class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i id="arrow-3" class="fa fa-arrow-circle-down fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div id='gas-level-3' class="huge">GL: 1300</div>
+                                    <div id='date-3'>10/10/2015 01:02:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
+    <script src="../vendor/morrisjs/morris.min.js"></script>
+    <script src="../data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <script type="text/javascript">
+    function draw_steps(){
+        $.ajax({ 
+            type: 'GET', 
+            url: 'http://104.198.237.45:8081/step/latest', 
+            data: {}, 
+            dataType: 'json',
+            success: function (data) {
+                var counter =0;
+                //$('#step-field-0').hide();
+				//$('#step-field-1').hide();
+				//$('#step-field-2').hide();
+				//$('#step-field-3').hide();
+                $.each(data, function(index, element) {
+                    $('#gas-level-'+counter).html('GL: ' + element.gas_level);
+                    if (element.gas_level > 3000){
+                    	$("#step-panel-"+counter).attr('class','panel panel-red');
+                    }
+                    if ((element.gas_level <= 3000)&& (element.gas_level > 2000)){
+                    	$("#step-panel-"+counter).attr('class','panel panel-yellow');
+                    }
+                    if ((element.gas_level <= 2000)&&(element.gas_level > 1000)){
+                    	$("#step-panel-"+counter).attr('class','panel panel-green');
+                    }
+                    if (element.gas_level <= 1000){
+                    	$("#step-panel-"+counter).attr('class','panel panel-primary');
+                    }
+                    $('#date-'+counter).html(element.createdAt);
+                    if (element.direction =='left')
+                        $("#arrow-"+counter).attr('class', 'fa fa-arrow-circle-left fa-5x');
+                    if (element.direction =='right')
+                        $("#arrow-"+counter).attr('class', 'fa fa-arrow-circle-right fa-5x');
+                    if (element.direction =='forward')
+                        $("#arrow-"+counter).attr('class', 'fa fa-arrow-circle-up fa-5x');
+                    if (element.direction =='backward')
+                        $("#arrow-"+counter).attr('class', 'fa fa-arrow-circle-down fa-5x');
+                    $('#step-field-'+counter).show();
+                    counter++;
+                });
+            }
+        });
+    }
+    draw_steps();
+    setInterval(draw_steps, 2000);
+
+    </script>
+	<script type="text/javascript">
+	function draw_graph(){
+        $.ajax({ 
+            type: 'GET', 
+            url: 'http://104.198.237.45:8081/step/latest/50', 
+            data: {}, 
+            dataType: 'json',
+            success: function (data) {
+            	var graph_data = new Array();
+            	for (counter=0; counter < data.length; counter++){
+					graph_data.push({ date:data[counter].createdAt, gas_level:data[counter].gas_level})
+            	}
+
+				chart.setData(graph_data);
+			}
+        });
+    }
+    draw_graph();
+    setInterval(draw_graph, 2000);
+	var chart = new Morris.Area({
+				  // ID of the element in which to draw the chart.
+				  element: 'gas-chart',
+				  // Chart data records -- each entry in this array corresponds to a point on
+				  // the chart.
+				  data: [],
+				  // The name of the data record attribute that contains x-values.
+				  xkey: 'date',
+				  // A list of names of data record attributes that contain y-values.
+				  ykeys: ['gas_level'],
+				  // Labels for the ykeys -- will be displayed when you hover over the
+				  // chart.
+				  labels: ['Gas Level']
+				});
+    </script>
+
+</body>
+
+</html>

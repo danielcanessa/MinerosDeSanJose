@@ -3,6 +3,7 @@ var fs = require("fs");
 var config = require('config');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var json2xls = require('json2xls');
 
 //Loading Models
 var Step = require('./models/step')
@@ -16,7 +17,8 @@ mongoose.connect(connectionString);
 
 var createServer = function(port) {
     var app = express();
-   
+    app.use(json2xls.middleware);
+
     app.use(bodyParser.json()); // support json encoded bodies
     app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
     app.use(function(req, res, next) {
@@ -48,6 +50,12 @@ var createServer = function(port) {
        res.send(JSON.stringify({ message : 'Step ' + id + ' has been deleted.' }));
     });
 
+    app.get('/delete', function(req, res){
+       Step.remove({}, function(err, numAffected) {
+          res.send(JSON.stringify({ message : 'Steps has been deleted.' }));
+       });
+    });
+
     app.get('/step', function(req, res) {
         Step.find({}, function(err, steps) {
             var stepMap = {};
@@ -64,12 +72,18 @@ var createServer = function(port) {
           res.send(step);
          });      
     });
-    app.get('/step/latest/50', function(req, res) {
+    app.get('/step/latest/20', function(req, res) {
         Step.find({}).sort('-createdAt').limit(20).exec(function(err, step) { 
           res.send(step);
          });      
     });
 
+    app.get('/step/xml', function(req, res) {
+        Step.find({}).exec(function(err, steps) { 
+          console.log(steps);
+          res.xls('data.xlsx', steps,{ fields: ['createdAt','gas_level','direction']});
+         });      
+    });
 
     return app.listen(port, '0.0.0.0');
     //return app.listen(8081, '0.0.0.0', function () {

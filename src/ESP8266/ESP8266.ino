@@ -3,8 +3,8 @@
  // arduino Tx (pin 3) ---- ESP8266 Rx
 SoftwareSerial esp8266(3,2); 
 
-String ssid = "dCanessa";
-String password = "edii5319";
+String ssid = "LosMalekus";
+String password = "morza200";
 
 int resetPin=3;
 

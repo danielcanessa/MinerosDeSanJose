@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
  // arduino Rx (pin 2) ---- ESP8266 Tx
  // arduino Tx (pin 3) ---- ESP8266 Rx
-SoftwareSerial esp8266(3,2); 
+SoftwareSerial esp8266(3,4); 
 
 String ssid = "LosMalekus";
 String password = "morza200";

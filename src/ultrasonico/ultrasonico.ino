@@ -12,12 +12,16 @@ int input4 = 2; //Backward pint of the left wheel
 
 
 void setup() {
-  Serial.begin(9600); 
+  Serial.begin(115200); 
   
   pinMode(input1, OUTPUT);  
   pinMode(input2, OUTPUT);  
   pinMode(input3, OUTPUT);  
   pinMode(input4, OUTPUT);
+//   digitalWrite(input1, HIGH);  //This pin is the forward pin of the right wheel
+//  digitalWrite(input2, HIGH);     //This pin is the backward pin of the right wheel//
+//  digitalWrite(input3, HIGH); //This pin is the forward pin of the left wheel
+ // digitalWrite(input4, HIGH);  //This pin is the backward pin of the left wheel
 }
 
 int dir=0;
@@ -27,15 +31,16 @@ void loop()
   int rightValue = ultraright.Ranging(CM);
   int leftValue = ultraleft.Ranging(CM);
 
+   //delay(200);
+
   Serial.println("left sensor: "+String(leftValue)+", front sensor: "+String(frontValue)+", right value: "+String(rightValue));
  
   
-  if(frontValue<15 && dir==0)
+  if(frontValue<51 && dir==0)
   {
-       
-    delay(100);
+         
     
-    if(ultraright.Ranging(CM)>ultraleft.Ranging(CM)) //right
+    if(rightValue>leftValue) //right
     {
       Serial.println("Right Direction");
       dir=1;
@@ -89,7 +94,9 @@ void loop()
     
   }
 
-  delay(500); 
+ 
+
+  delay(200); 
   Serial.println("");
 }
 
@@ -116,7 +123,7 @@ void goLeft(){
   digitalWrite(input2, LOW);     //This pin is the backward pin of the right wheel
   digitalWrite(input3, LOW); //This pin is the forward pin of the left wheel
   digitalWrite(input4, HIGH);  //This pin is the backward pin of the left wheel
-  delay(600);
+  delay(300);
   digitalWrite(input1, LOW);  //This pin is the forward pin of the right wheel
   digitalWrite(input2, LOW);     //This pin is the backward pin of the right wheel
   digitalWrite(input3, LOW); //This pin is the forward pin of the left wheel
@@ -129,7 +136,7 @@ void goRight(){
   digitalWrite(input2, HIGH);     //This pin is the backward pin of the right wheel
   digitalWrite(input3, LOW); //This pin is the forward pin of the left wheel
   digitalWrite(input4, LOW);  //This pin is the backward pin of the left wheel
-  delay(600);
+  delay(300);
   digitalWrite(input1, LOW);  //This pin is the forward pin of the right wheel
   digitalWrite(input2, LOW);     //This pin is the backward pin of the right wheel
   digitalWrite(input3, LOW); //This pin is the forward pin of the left wheel

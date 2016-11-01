@@ -3,7 +3,7 @@
  // arduino Rx (pin 2) ---- ESP8266 Tx
  // arduino Tx (pin 3) ---- ESP8266 Rx
 SoftwareSerial esp8266(3,4); 
-
+const int AOUTpin=0;//the AOUT pin of the alcohol sensor goes into analog pin A0 of the arduino
 String ssid = "LosMalekus";
 String password = "morza200";
 
@@ -16,6 +16,8 @@ int input1 = 1  ; //Forward pin of the right wheel
 int input2 = 9; //Backward pin of the right wheel
 int input3 = 6; //Forward pin of the left wheel
 int input4 = 2; //Backward pint of the left wheel
+
+int value; //Have the gas sensor value
 
 
 void initializeESP8266()
@@ -36,7 +38,11 @@ void post(String carMovement){
 //AT+CIPSEND=1,300
 String a = "direction:" + carMovement + '}';
 // String data = '{' + "gas_level:140" + ',' + a ;
- String data = "{\"gas_level\":140, \"direction\":\"forward\"}";
+ String gasValue = String(value);
+ String f = "140";
+ String data = "{\"gas_level\":" + gasValue + ", \"direction\":\"forward\"}";
+
+// String dataREspaldo = "{\"gas_level\":140, \"direction\":\"forward\"}";
 
  /*
   * Specifies the lenght of the post headers
@@ -154,7 +160,8 @@ void loop()
   int rightValue = ultraright.Ranging(CM);
   int leftValue = ultraleft.Ranging(CM);
 
-  
+  value= analogRead(AOUTpin);//reads the analaog value from the alcohol sensor's AOUT pin
+    
   //delay(2000);
 
 // Serial.println("left sensor: "+String(leftValue)+", front sensor: "+String(frontValue)+", right value: "+String(rightValue));
